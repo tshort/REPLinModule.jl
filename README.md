@@ -1,7 +1,37 @@
-# REPLInModule
+# REPLinModule
 
-[![Build Status](https://travis-ci.org/tshort/REPLInModule.jl.svg?branch=master)](https://travis-ci.org/tshort/REPLInModule.jl)
+This is a basic sticky REPL mode that allows you to evaluate code in a module. By default, the "active module" for this mode is `Base`. To change the active module, use `REPLinModule.set(mod)`. The active module is shown as part of the prompt.
 
-[![Coverage Status](https://coveralls.io/repos/tshort/REPLInModule.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/tshort/REPLInModule.jl?branch=master)
+Initiate this mode by hitting the `}` key (left curly bracket). To leave this mode, hit the backspace key at a new line. Note that the help and shell REPL modes are available, but they revert back to the normal Julia prompt after they finish. 
 
-[![codecov.io](http://codecov.io/github/tshort/REPLInModule.jl/coverage.svg?branch=master)](http://codecov.io/github/tshort/REPLInModule.jl?branch=master)
+
+```julia
+julia> using REPLinModule
+
+julia Base> REPL
+Base.REPL
+
+julia> REPLinModule.set(Base.Meta)
+
+julia> whos()
+                          Base               Module
+                          Core               Module
+                          Main               Module
+                  REPLinModule  18242 KB     Module
+                           ans      0 bytes  Void
+
+julia Base.Meta> whos()
+                          Meta  18261 KB     Module
+                        isexpr      0 bytes  Base.Meta.#isexpr
+                          quot      0 bytes  Base.Meta.#quot
+                    show_sexpr      0 bytes  Base.Meta.#show_sexpr
+
+julia Base.Meta> quot(:x)
+:(:x)
+
+julia>
+```
+
+Note that this is an unregistered package. It doesn't have any tests. 
+
+This may be superceded by a Base feature (https://github.com/JuliaLang/julia/issues/22562).

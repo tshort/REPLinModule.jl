@@ -1,4 +1,4 @@
-The REPLInModule.jl package is licensed under the MIT "Expat" License:
+The REPLinModule.jl package is licensed under the MIT "Expat" License:
 
 > Copyright (c) 2017: Tom Short.
 > 
