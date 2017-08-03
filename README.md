@@ -1,8 +1,9 @@
 # REPLinModule
 
-This is a basic sticky REPL mode that allows you to evaluate code in a module. By default, the "active module" for this mode is `Base`. To change the active module, use `REPLinModule.set(mod)`. The active module is shown as part of the prompt.
+This is a basic sticky REPL mode for Julia that allows you to evaluate code in a module. By default, the "active module" for this mode is `Base`. To change the active module, use `REPLinModule.set(mod)`. The active module is shown as part of the prompt.
 
-Initiate this mode by hitting the `}` key (left curly bracket). To leave this mode, hit the backspace key at a new line. Note that the help and shell REPL modes are available, but they revert back to the normal Julia prompt after they finish. 
+Initiate this mode by hitting the `}` key (right curly bracket). To leave this mode, hit the backspace key at a new line. Note that the help and shell REPL modes are available, but they revert back to the normal Julia prompt after finishing. 
+ 
 
 
 ```julia
