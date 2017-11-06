@@ -22,8 +22,7 @@ end
 
 make_prompt() = string("julia $active_module> ")
 
-function run_repl()
-    repl = Base.active_repl
+function run_repl(repl)
     mirepl = isdefined(repl,:mi) ? repl.mi : repl
 
     main_mode = mirepl.interface.modes[1]
@@ -74,7 +73,12 @@ end
 
 function __init__()
     if isdefined(Base, :active_repl)
-        run_repl()
+        run_repl(Base.active_repl)
+    else
+        atreplinit() do repl
+            repl.interface = Base.REPL.setup_interface(repl)
+            run_repl(repl)
+        end
     end
 end
 
